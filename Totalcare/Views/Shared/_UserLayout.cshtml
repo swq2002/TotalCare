@@ -1,0 +1,225 @@
+﻿@model UserViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Insurax - Insurance Company HTML Template - Home Four</title>
+    <meta name="author" content="Insurax">
+    <meta name="description" content="Insurax - Insurance Company HTML Template">
+    <meta name="keywords" content="Insurax - Insurance Company HTML Template">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="57x57" href="~/HomeAssets/img/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/HomeAssets/img/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/HomeAssets/img/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/HomeAssets/img/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/HomeAssets/img/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/HomeAssets/img/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/HomeAssets/img/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/HomeAssets/img/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/HomeAssets/img/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/HomeAssets/img/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/HomeAssets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/HomeAssets/img/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/HomeAssets/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="~/HomeAssets/img/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/HomeAssets/css/app.min.css">
+    <link rel="stylesheet" href="~/HomeAssets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/HomeAssets/css/style.css">
+</head>
+<body class="theme-blue">
+    <div class="preloader">
+        <div class="preloader-inner"><span class="loader"></span></div>
+    </div>
+    <div class="th-menu-wrapper">
+        <div class="th-menu-area text-center">
+            <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
+            <div class="mobile-logo"><a href="index.html"><h3 class="text-white m-0"><img class="img-fluid me-3" src="~/HomeAseets/img/icon/icon-02-primary.png" alt="">TotalCare</h3></a></div>
+            <div class="th-mobile-menu">
+                <ul>
+                    <li>
+                        <a href="/Home/Index">Home</a>
+
+                    </li>
+                    <li>
+                        <a href="/Home/Index#aboutus">About Us</a>
+
+                    </li>
+                    <li>
+                        <a href="/Home/Index#services">Our Services</a>
+
+                    </li>
+                    <li>
+                        <a href="/Home/Index#testimonial">Testimonials</a>
+
+                    </li>
+                    <li>
+                        <a href="/Home/Index#contactus">Contact Us</a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @{
+        var contactInfo = ViewData["contactInfo"] as Aboutu;
+    }
+
+    <div class="sidemenu-wrapper d-none d-lg-block">
+        <div class="sidemenu-content">
+            <button class="closeButton sideMenuCls"><i class="far fa-times"></i></button>
+
+            <div class="widget">
+                <div class="th-widget-about">
+                    <div class="about-logo"><a href="/Home/Index"><h3 class="text-white m-0"><img class="img-fluid me-3" src="~/HomeAseets/img/icon/icon-02-primary.png" alt="">TotalCare</h3></a></div>
+                    <p class="about-text">There are several health insurance solutions available to address specific needs. Best solution is here.</p>
+                    <div class="th-social"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a> <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a> <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a> <a href="https://www.behance.com/"><i class="fab fa-behance"></i></a></div>
+                </div>
+                <br>
+                <div class="header-button">
+                    <a href="/Authentication/Register" class="th-btn style2">Register<i class="fas fa-arrow-right ms-2"></i></a>
+
+                </div>
+                <br>
+                <div class="header-button">
+                    <a href="/Authentication/Login" class="th-btn style2">Login<i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+            <div class="widget">
+                <h3 class="widget_title">Information</h3>
+                <div class="th-widget-contact">
+                    <div class="info-wrap">
+                        <p class="info-wrap_text"> Address</p>
+                    </div>
+
+                    <div class="info-wrap"><a href="tel: Phonenumber" class="info-wrap_link"> Phonenumber </a><a href="mailto: Email" class="info-wrap_link"> Email/a></div>
+                </div>
+            </div>
+            <div class="widget widget_nav_menu">
+                <h3 class="widget_title">Company</h3>
+                <div class="menu-all-pages-container">
+                    <ul class="menu">
+                        <li>
+                            <a href="/Home/Index">Home</a>
+
+                        </li>
+                        <li>
+                            <a href="/Home/Index#about">About Us</a>
+
+                        </li>
+                        <li>
+                            <a href="/Home/Index#services">Our Services</a>
+
+                        </li>
+                        <li>
+                            <a href="/Home/Index#testimonial">Testimonials</a>
+
+                        </li>
+                        <li>
+                            <a href="/Home/Index#contactus">Contact Us</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="th-header header-layout6">
+
+        <div class="sticky-wrapper">
+            <div class="sticky-active">
+                <div class="menu-area">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto">
+                                <div class="header-logo"><a href="/Home/Index"><h3 class="m-0"><img class="img-fluid me-3" src="~/HomeAseets/img/icon/icon-02-primary.png" alt="">TotalCare</h3></a></div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <nav class="main-menu d-none d-lg-inline-block">
+                                            <ul>
+
+                                                <li class="menu-item-has-children">
+                                                    <div class="user-img c-pointer position-relative me-auto" data-toggle="dropdown">
+                                                        <img src="@Url.Content("~/Images/" + Model.User.Profilepicture)" height="40" width="60" />
+                                                        <span href="#" class="activity active text-white"> @Model.User.Fullname </span>
+
+                                                    </div>
+                                                    <ul class="sub-menu">
+                                                        <li>
+                                                            <a href="/Users/Edit"><i class="fa-solid fa-user"></i> <span>Profile</span></a>
+                                                        </li>
+
+
+                                                        <li><a asp-action="Logout"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a></li>
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+                                        </nav>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-shape"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="th-blog-wrapper mt-4 space-extra-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-2 col-lg-3">
+                    <aside class="sidebar-area">
+                        <div class="widget widget_nav_menu">
+                            <h3 class="widget_title">All Services</h3>
+                            <div class="menu-all-pages-container">
+                                <ul class="menu">
+                                    <li><a href="/Users/Index">Subscription Details</a></li>
+                                    <li><a href="/Beneficiaries/Create">Add a beneficiary</a></li>
+                                    <li><a href="/Testimonials/Index">Add a testimonial</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </aside>
+                </div>
+                <div class="col-xxl-10 col-lg-9">
+                    @RenderBody()
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div class="scroll-top">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;"></path>
+        </svg>
+    </div>
+    <script src="~/HomeAssets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="~/HomeAssets/js/app.min.js"></script>
+    <script src="~/HomeAssets/js/main.js"></script>
+</body>
+<!-- Mirrored from themeholy.com/html/insurax/demo/home-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 14 Oct 2023 01:31:07 GMT -->
+</html>

@@ -1,0 +1,38 @@
+﻿@model UserViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<div class="testi-box5">
+    <div class="testi-box_wrap">
+        <div class="testi-box_avater">
+            <div class="thumb"><img src="@Url.Content("~/Images/" + Model.User.Profilepicture)" alt="testimonial"></div>
+        </div>
+        <div class="testi-box_content">
+            <h4 class="testi-box_title h6">@Model.User.Fullname </h4>
+            <br />
+            <h4 class="testi-box_title h6">
+                @Model.Testimonial.Testimonialsubject
+            </h4>
+            <div class="media">
+                <div class="media-left">
+                    <p class="testi-box_name">
+                        @Model.Testimonial.Testimonialtext
+                    </p>
+                </div>
+
+            </div>
+            
+        </div>
+      
+    </div>
+    <br />
+    <br />
+    <center>
+        <div class="form-btn col-12"><a href="/Testimonials/Edit" class="th-btn">Edit <i class="far fa-paper-plane"></i></a></div>
+
+    </center>
+</div>

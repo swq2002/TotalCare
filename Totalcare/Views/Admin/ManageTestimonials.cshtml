@@ -1,0 +1,354 @@
+﻿@model AdminViewModel
+@{
+    Layout = "_AdminLayout";
+}
+<style>
+    #notificationsPopup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 20px;
+        max-width: 80%;
+        max-height: 80%;
+        overflow: auto;
+    }
+
+    .Notification_body {
+        max-height: 60%; /* Adjust the height as needed */
+        overflow-y: auto;
+    }
+</style>
+
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Customer Requests</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div class="QA_section">
+                            <div class="white_box_tittle list_header">
+                                <h4>Testimonials Waiting Table</h4>
+                                <div class="box_right d-flex lms_block">
+                                    <div class="serach_field_2">
+                                        <div class="search_inner">
+                                            <form Active="#" asp-action="ManageTestimonials">
+                                                <div class="search_field">
+                                                    <input type="text" for="searchStringW" name="searchStringW" placeholder="Search customer name...">
+                                                </div>
+                                                <button type="submit"> <i class="ti-search"></i> </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="QA_table mb_30">
+
+                                <table class="table lms_table_active ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Customer Name</th>
+                                            <th scope="col">Testimonial</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.TestimonialsWaiting)
+                                        {
+                                            <tr>
+                                                <th scope="row"> <a href="#" class="question_content"> @item.User.Fullname</a></th>
+                                                <td>
+                                                    <a  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewModal-@item.Testimonialid">View</a>
+                                                </td>
+
+                                                <td>@item.Requeststatus</td>
+
+                                                <td>
+                                                    <a asp-action="TesRequest" asp-route-status="Accepted" asp-route-id="@item.Testimonialid" class="btn btn-success">Accept</a>
+                                                    <a asp-action="TesRequest" asp-route-status="Rejected" asp-route-id="@item.Testimonialid" class="btn btn-danger">Reject</a>
+                                                </td>
+                                            </tr>
+                                            <div class="modal fade" id="viewModal-@item.Testimonialid" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true" data-backdrop="static">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <style>
+                                                        /* Styles for elements inside the modal */
+                                                        .modal-content {
+                                                            background-color: white;
+                                                            border: 1px solid #ccc;
+                                                            padding: 20px;
+                                                            max-width: 80%;
+                                                            max-height: 80%;
+                                                            overflow: auto;
+                                                        }
+
+                                                        .modal-body {
+                                                            max-height: 60%; /* Adjust the height as needed */
+                                                            overflow-y: auto;
+                                                        }
+
+                                                        body.modal-open div.modal-backdrop {
+                                                            z-index: 0 !important   
+                                                        }
+                                                    </style>
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="viewModalLabel">View Testimonial</h5>
+                                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @item.Testimonialtext
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                          
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Customer Requests</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div class="QA_section">
+                            <div class="white_box_tittle list_header">
+                                <h4>Testimonials Accepted Table</h4>
+                                <div class="box_right d-flex lms_block">
+                                    <div class="serach_field_2">
+                                        <div class="search_inner">
+                                            <form Active="#" asp-action="ManageTestimonials">
+                                                <div class="search_field">
+                                                    <input type="text" for="searchStringA" name="searchStringA" placeholder="Search customer name...">
+                                                </div>
+                                                <button type="submit"> <i class="ti-search"></i> </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="QA_table mb_30">
+
+                                <table class="table lms_table_active ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Customer Name</th>
+                                            <th scope="col">Testimonial</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.TestimonialsAccepted)
+                                        {
+                                            <tr>
+                                                <th scope="row"> <a href="#" class="question_content"> @item.User.Fullname</a></th>
+                                                <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewModal-@item.Testimonialid">View</a></td>
+                                                <td>@item.Requeststatus</td>
+
+                                                <td>
+                                                    <a asp-action="TesRequest" asp-route-status="Rejected" asp-route-id="@item.Testimonialid" class="btn btn-danger">Reject</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <div class="modal fade" id="viewModal-@item.Testimonialid" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true" data-backdrop="static">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <style>
+                                                        /* Styles for elements inside the modal */
+                                                        .modal-content {
+                                                            background-color: white;
+                                                            border: 1px solid #ccc;
+                                                            padding: 20px;
+                                                            max-width: 80%;
+                                                            max-height: 80%;
+                                                            overflow: auto;
+                                                        }
+
+                                                        .modal-body {
+                                                            max-height: 60%; /* Adjust the height as needed */
+                                                            overflow-y: auto;
+                                                        }
+
+                                                        body.modal-open div.modal-backdrop {
+                                                            z-index: 0 !important
+                                                        }
+                                                    </style>
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="viewModalLabel">View Testimonial</h5>
+                                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @item.Testimonialtext
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Customer Requests</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div class="QA_section">
+                            <div class="white_box_tittle list_header">
+                                <h4>Testimonials Rejected Table</h4>
+                                <div class="box_right d-flex lms_block">
+                                    <div class="serach_field_2">
+                                        <div class="search_inner">
+                                            <form Active="#" asp-action="ManageTestimonials" method="get">
+                                                <div class="search_field">
+                                                    <input type="text" for="searchStringR" name="searchStringR" placeholder="Search customer name...">
+                                                </div>
+                                                <button type="submit"> <i class="ti-search"></i> </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="QA_table mb_30">
+
+                                <table class="table lms_table_active ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Customer Name</th>
+                                            <th scope="col">Testimonial</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.TestimonialsRejected)
+                                        {
+                                            <tr>
+                                                <th scope="row"> <a href="#" class="question_content"> @item.User.Fullname</a></th>
+                                                <td>
+                                                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewModal-@item.Testimonialid">View</a>
+                                                </td>
+                                                <td>@item.Requeststatus</td>
+
+                                                <td>
+                                                    <a asp-action="TesRequest" asp-route-status="Accepted" asp-route-id="@item.Testimonialid" class="btn btn-success">Accept</a>
+
+                                                </td>
+                                            </tr>
+                                            <div class="modal fade" id="viewModal-@item.Testimonialid" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true" data-backdrop="static">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <style>
+                                                        /* Styles for elements inside the modal */
+                                                        .modal-content {
+                                                            background-color: white;
+                                                            border: 1px solid #ccc;
+                                                            padding: 20px;
+                                                            max-width: 80%;
+                                                            max-height: 80%;
+                                                            overflow: auto;
+                                                        }
+
+                                                        .modal-body {
+                                                            max-height: 60%; /* Adjust the height as needed */
+                                                            overflow-y: auto;
+                                                        }
+
+                                                        body.modal-open div.modal-backdrop {
+                                                            z-index: 0 !important
+                                                        }
+                                                    </style>
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="viewModalLabel">View Testimonial</h5>
+                                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @item.Testimonialtext
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

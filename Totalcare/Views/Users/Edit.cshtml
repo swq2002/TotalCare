@@ -1,0 +1,237 @@
+﻿@model UserViewModel
+
+@{
+    Layout = TempData["Layout"] as string;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+
+    <title>bs5 edit profile account details - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      
+
+        .img-account-profile {
+            height: 10rem;
+        }
+
+        .rounded-circle {
+            border-radius: 50% !important;
+        }
+
+        .card {
+            box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+        }
+
+            .card .card-header {
+                font-weight: 500;
+            }
+
+        .card-header:first-child {
+            border-radius: 0.35rem 0.35rem 0 0;
+        }
+
+        .card-header {
+            padding: 1rem 1.35rem;
+            margin-bottom: 0;
+            background-color: rgba(33, 40, 50, 0.03);
+            border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Adjust button widths as needed */
+        .btn-primary,
+        .btn-success {
+            flex: 1;
+        }
+        .form-control, .dataTable-input {
+            display: block;
+            width: 100%;
+            padding: 0.875rem 1.125rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1;
+            color: #69707a;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #c5ccd6;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0.35rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        a{
+            text-decoration:none
+
+        }
+        
+    </style>
+</head>
+<body>
+
+       
+        <hr class="mt-0 mb-4">
+        <div class="row">
+            <div class="col-xl-4">
+
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+
+                       <img src="@Url.Content("~/Images/" + Model.User.Profilepicture)"  />
+
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <input type="hidden" asp-for="User.Userid" />
+
+                           
+                            <div class=" align-items-center">
+                                <label for="fileInput" class="btn btn-primary m-5">
+                                    Choose image
+                                    <input type="file" id="fileInput" name="imageFile" style="display: none;">
+                                </label>
+                                <button type="submit" class="btn btn-success">Upload</button>
+                        </div>
+
+                            <br />
+                            @{
+                                string uploadMessage = TempData["UploadMessage"] as string;
+                            }
+                            <h3 class="text-success">@uploadMessage</h3>
+                            <br />
+
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+
+                <div class="card mb-4">
+                    <div class="card-header">Account Details</div>
+                    <div class="card-body" >
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <input type="hidden" asp-for="User.Userid" />
+                            <input type="hidden" asp-for="User.Roleid" />
+
+                            <div class="mb-3">
+                                <label class="small mb-1" asp-for="User.Fullname">Full Name</label>
+                                <input class="form-control" asp-for="User.Fullname" id=" Fullname" type="text" placeholder="Enter your full name" value=@Model.User.Fullname required>
+                                <span asp-validation-for="User.Fullname" ></span>
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="small mb-1" asp-for="User.Email">Email address</label>
+                                <input class="form-control" asp-for="User.Email" id="Email" type="email" placeholder="Enter your email address" value=@Model.User.Email required>
+                                <span asp-validation-for="User.Email"></span>
+
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" asp-for="User.Phonenumber">Phone Number</label>
+                                <input class="form-control" asp-for="User.Phonenumber" id="Phonenumber" type="text" placeholder="Enter your phone number" value=@Model.User.Phonenumber required>
+                                <span asp-validation-for="User.Phonenumber"></span>
+
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" asp-for="User.Password">Password</label>
+                                <input class="form-control" asp-for="User.Password" id="Password" type="password" placeholder="Enter your password" value=@Model.User.Password required>
+                            </div>
+
+                         <br />
+                            @{
+                                string updateMessage = TempData["UpdateMessage"] as string;
+                            }
+                            <h3 class="text-success">@updateMessage</h3>
+                            <br />
+
+                            <button class="btn btn-primary" type="submit">Save changes</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="User.Userid" />
+            <div class="form-group">
+                <label asp-for="User.Password" class="control-label"></label>
+                <input asp-for="User.Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Fullname" class="control-label"></label>
+                <input asp-for="User.Fullname" class="form-control" />
+                <span asp-validation-for="Fullname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Email" class="control-label"></label>
+                <input asp-for="User.Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Phonenumber" class="control-label"></label>
+                <input asp-for="User.Phonenumber" class="form-control" />
+                <span asp-validation-for="Phonenumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Profilepicture" class="control-label"></label>
+                <input asp-for="User.Profilepicture" class="form-control" />
+                <span asp-validation-for="Profilepicture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Roleid" class="control-label"></label>
+                <select asp-for="User.Roleid" class="form-control" asp-items="ViewBag.Roleid"></select>
+                <span asp-validation-for="Roleid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>
+*@

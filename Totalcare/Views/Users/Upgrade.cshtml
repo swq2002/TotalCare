@@ -1,0 +1,39 @@
+﻿@model UserViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    Layout = null;
+
+}
+    <div class="container">
+        <div class="title-area text-center">
+            <span class="sub-title style2">Upgrade Your Plan</span>
+            <h2 class="sec-title">Upgrade your account <br /> to access the 'Adding Beneficiary' feature</h2>
+        </div>
+        <div class="row gy-4 justify-content-center">
+            <div class="col-xl-6 col-md-10">
+                <div class="price-card">
+                    <span class="offer-tag">Save Over 25%</span>
+                    <div class="price-bg-shape"><img src="assets/img/bg/pricing-box-bg.png" alt="img"></div>
+                    <h3 class="price-card_title box-title">@Model.SubscriptionTypes.ElementAt(2).Name</h3>
+                    <div class="price-card_content"> 
+                        <h4 class="price-card_price">$@Model.SubscriptionTypes.ElementAt(2).Price </h4>
+                        <div class="available-list">
+                            <ul class="checklist">
+                                <li><i class="fas fa-check-circle"></i> Coverage for hospital stays</li>
+                                <li><i class="fas fa-check-circle"></i> Support for preventive care</li>
+                                <li><i class="fas fa-check-circle"></i> Reimbursement for doctor visits</li>
+                                <li><i class="fas fa-check-circle"></i> Add Beneficiaries</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a asp-controller="Subscriptions" asp-action="Create" asp-route-id="3" class="th-btn">Purchase Order</a>
+                </div>
+            </div>
+
+           
+        </div>
+    </div>

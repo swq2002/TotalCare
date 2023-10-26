@@ -1,0 +1,90 @@
+﻿@model UserViewModel
+
+@{
+    Layout = "_UserLayout";
+}
+<section class="space overflow-hidden bg-title">
+    <div class="shape-mockup jump d-none d-xl-block" data-bottom="-5%" data-left="0%"><img src="~/HomeAssets/img/shape/appointment-bg-shape.png" alt="shape"></div>
+    <div class="container rounded">
+
+        <div class="title-area centered">
+            <span class="sub-title">Edit your testimonial</span>
+            <h2 class="sec-title text-white">Request for Editing Testimonial</h2>
+        </div>
+        <form asp-action="Edit" method="POST">
+            <div class="row">
+                <input type="hidden" asp-for="Testimonial.Testimonialid" />
+                <input type="hidden" asp-for="Testimonial.Userid" />
+                <div class="form-group col-md-12">
+                    <input type="text" class="form-control" asp-for="Testimonial.Testimonialsubject" name="Testimonial.Testimonialsubject" id="Testimonial.Testimonialsubject" value=@Model.Testimonial.Testimonialsubject placeholder="Subject"> <i class="fal fa-user"></i>
+
+
+                </div>
+
+                <div class="form-group col-12">
+                    <textarea asp-for="Testimonial.Testimonialtext" name="Testimonial.Testimonialtext" id="Testimonial.Testimonialtext" value=@Model.Testimonial.Testimonialtext cols="30" rows="3" class="form-control" placeholder="Type Your Testimonial"></textarea>
+                </div>
+
+                <center>
+                    <div class="form-btn col-12"><button type="submit" class="th-btn style2">Submit Now <i class="far fa-paper-plane"></i></button></div>
+
+                </center>
+            </div>
+            <p class="form-messages mb-0 mt-3"></p>
+        </form>
+    </div>
+
+</section>
+
+
+@*
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>Testimonial</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Testimonialid" />
+            <div class="form-group">
+                <label asp-for="Userid" class="control-label"></label>
+                <select asp-for="Userid" class="form-control" asp-items="ViewBag.Userid"></select>
+                <span asp-validation-for="Userid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Testimonialtext" class="control-label"></label>
+                <input asp-for="Testimonialtext" class="form-control" />
+                <span asp-validation-for="Testimonialtext" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Testimonialdate" class="control-label"></label>
+                <input asp-for="Testimonialdate" class="form-control" />
+                <span asp-validation-for="Testimonialdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Testimonialsubject" class="control-label"></label>
+                <input asp-for="Testimonialsubject" class="form-control" />
+                <span asp-validation-for="Testimonialsubject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>*@

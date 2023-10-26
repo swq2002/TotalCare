@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Totalcare.Models.Beneficiary>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Relationship)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proofdocument)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Requeststatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Relationship)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proofdocument)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requeststatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Subscriptionid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Beneficiaryid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Beneficiaryid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Beneficiaryid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
